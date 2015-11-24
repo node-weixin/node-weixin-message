@@ -1,0 +1,17 @@
+<xml>
+  <ToUserName><![CDATA[<%- @to %>]]></ToUserName>
+  <FromUserName><![CDATA[<%- @from %>]]></FromUserName>
+  <CreateTime><%- @time %></CreateTime>
+  <MsgType><![CDATA[<%- @type %>]]></MsgType>
+  <ArticleCount><%- @articles.length %></ArticleCount>
+  <Articles>
+    <% for article in @articles :  %>
+    <item>
+      <Title><![CDATA[<%-  article.title %>]]></Title>
+      <Description><![CDATA[<%- article.description %>]]></Description>
+      <PicUrl><![CDATA[<%- article.picUrl %>]]></PicUrl>
+      <Url><![CDATA[<%- article.url %>]]></Url>
+    </item>
+    <% end %>
+  </Articles>
+</xml>
