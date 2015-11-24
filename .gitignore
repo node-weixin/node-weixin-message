@@ -4,7 +4,6 @@ npm-debug.log
 # Logs
 logs
 *.log
-npm-debug.log*
 
 # Runtime data
 pids
@@ -77,3 +76,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
