@@ -24,7 +24,9 @@
   "dependencies": {
     "ect": "^0.5.9",
     "ejs": "^2.3.4",
-    "meow": "^3.1.0"
+    "meow": "^3.1.0",
+    "node-weixin-request": "^0.2.0",
+    "node-weixin-util": "^0.2.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -35,6 +37,7 @@
     "grunt-mocha-cli": "^1.12.0",
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
+    "node-weixin-auth": "^0.2.2",
     "time-grunt": "^1.1.0",
     "xml2json": "^0.9.0"
   },
