@@ -24,6 +24,7 @@
   "dependencies": {
     "ect": "^0.5.9",
     "ejs": "^2.3.4",
+    "lodash": "^3.10.1",
     "meow": "^3.1.0",
     "node-weixin-request": "^0.2.0",
     "node-weixin-util": "^0.2.0"
