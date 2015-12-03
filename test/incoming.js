@@ -4,7 +4,7 @@ var nodeWeixinMessage = require('../');
 var fs = require('fs');
 var path = require('path');
 
-var x2j = require('xml2json');
+var x2j = require('xml2js');
 
 describe('node-weixin-message', function () {
   it('it should be able to handle incoming text', function (done) {
@@ -20,8 +20,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/text.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming image', function (done) {
@@ -38,8 +41,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/image.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming voice', function (done) {
@@ -57,8 +63,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/voice.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming video', function (done) {
@@ -75,8 +84,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/video.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming short video', function (done) {
@@ -93,8 +105,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/shortvideo.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming location', function (done) {
@@ -113,8 +128,11 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/location.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 
   it('it should be able to handle incoming link', function (done) {
@@ -132,7 +150,10 @@ describe('node-weixin-message', function () {
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
-    var json = x2j.toJson(xml, {object: true}).xml;
-    messages.parse(json);
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
   });
 });

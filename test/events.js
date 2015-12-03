@@ -4,7 +4,7 @@ var nodeWeixinMessage = require('../');
 var fs = require('fs');
 var path = require('path');
 
-var x2j = require('xml2json');
+var x2j = require('xml2js');
 
 describe('node-weixin-message', function () {
   describe('#events', function () {
@@ -20,8 +20,11 @@ describe('node-weixin-message', function () {
         done();
       });
       var xml = fs.readFileSync(path.resolve(__dirname, './events/subscribe.xml'));
-      var json = x2j.toJson(xml, {object: true}).xml;
-      messages.parse(json);
+      x2j.parseString(xml, {
+        explicitArray: false, ignoreAttrs: true
+      }, function (error, json) {
+        messages.parse(json.xml);
+      });
     });
 
     it('it should be able to handle unsubscribe event', function (done) {
@@ -36,8 +39,11 @@ describe('node-weixin-message', function () {
         done();
       });
       var xml = fs.readFileSync(path.resolve(__dirname, './events/unsubscribe.xml'));
-      var json = x2j.toJson(xml, {object: true}).xml;
-      messages.parse(json);
+      x2j.parseString(xml, {
+        explicitArray: false, ignoreAttrs: true
+      }, function (error, json) {
+        messages.parse(json.xml);
+      });
     });
 
     it('it should be able to handle unsubscribe event', function () {
