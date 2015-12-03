@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-message",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Weixin message handling",
   "author": {
     "name": "calidion",
@@ -42,7 +42,8 @@
     "mocha": "^2.3.4",
     "node-weixin-auth": "^0.2.3",
     "node-weixin-media": "^0.2.1",
-    "time-grunt": "^1.1.0"
+    "time-grunt": "^1.1.0",
+    "xml2js": "^0.4.15"
   },
   "scripts": {
     "test": "grunt",
