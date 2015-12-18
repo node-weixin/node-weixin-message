@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-message",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Weixin message handling",
   "author": {
     "name": "calidion",
@@ -26,7 +26,9 @@
     "ejs": "^2.3.4",
     "lodash": "^3.10.1",
     "meow": "^3.1.0",
+    "node-weixin-auth": "^0.2.7",
     "node-weixin-request": "^0.3.0",
+    "node-weixin-settings": "0.0.6",
     "node-weixin-util": "^0.2.0"
   },
   "devDependencies": {
@@ -40,8 +42,7 @@
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
     "mocha": "^2.3.4",
-    "node-weixin-auth": "^0.2.3",
-    "node-weixin-media": "^0.2.1",
+    "node-weixin-media": "^0.2.2",
     "time-grunt": "^1.1.0",
     "xml2js": "^0.4.15"
   },

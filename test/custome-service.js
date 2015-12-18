@@ -16,9 +16,14 @@ var media = require('node-weixin-media');
 var shareId = null;
 
 describe('node-weixin-message', function () {
+  it("should init", function(done) {
+    auth.determine(app, function() {
+      done();
+    });
+  });
   describe("#api", function () {
     it('it should be able to handle text event', function (done) {
-      service.api.text(app, auth, process.env.APP_OPENID, 'hello', function (error, data) {
+      service.api.text(app, process.env.APP_OPENID, 'hello', function (error, data) {
         assert.equal(true, !error);
         if (data.errcode !== 45015) {
           assert.equal(true, data.errcode === 0);
@@ -29,10 +34,10 @@ describe('node-weixin-message', function () {
     });
     it('it should be able to handle image event', function (done) {
       var file = path.resolve(__dirname, "media/test.png");
-      media.temporary.create(app, auth, 'image', file, function (error, json) {
+      media.temporary.create(app, 'image', file, function (error, json) {
         //json.type
         //json.media_id
-        service.api.image(app, auth, process.env.APP_OPENID, json.media_id, function (error, data) {
+        service.api.image(app, process.env.APP_OPENID, json.media_id, function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -45,7 +50,7 @@ describe('node-weixin-message', function () {
 
     it('it should be able to handle thumb event', function (done) {
       var file = path.resolve(__dirname, "media/test.png");
-      media.temporary.create(app, auth, 'thumb', file, function (error, json) {
+      media.temporary.create(app, 'thumb', file, function (error, json) {
         //json.type
         //json.media_id
         shareId = json.thumb_media_id;
@@ -55,10 +60,10 @@ describe('node-weixin-message', function () {
 
     it('it should be able to handle voice event', function (done) {
       var file = path.resolve(__dirname, "media/test.amr");
-      media.temporary.create(app, auth, 'voice', file, function (error, json) {
+      media.temporary.create(app, 'voice', file, function (error, json) {
         //json.type
         //json.media_id
-        service.api.voice(app, auth, process.env.APP_OPENID, json.media_id, function (error, data) {
+        service.api.voice(app, process.env.APP_OPENID, json.media_id, function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -72,10 +77,10 @@ describe('node-weixin-message', function () {
 
     it('it should be able to handle video event', function (done) {
       var file = path.resolve(__dirname, "media/test.mp4");
-      media.temporary.create(app, auth, 'video', file, function (error, json) {
+      media.temporary.create(app, 'video', file, function (error, json) {
         //json.type
         //json.media_id
-        service.api.video(app, auth, process.env.APP_OPENID, 'title', 'desc', json.media_id, shareId, function (error, data) {
+        service.api.video(app, process.env.APP_OPENID, 'title', 'desc', json.media_id, shareId, function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -87,7 +92,7 @@ describe('node-weixin-message', function () {
     });
 
     it('it should be able to handle music event', function (done) {
-      service.api.music(app, auth, process.env.APP_OPENID,
+      service.api.music(app, process.env.APP_OPENID,
         'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',
         'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',
         shareId,
@@ -119,7 +124,7 @@ describe('node-weixin-message', function () {
         }
       ];
 
-      service.api.news(app, auth, process.env.APP_OPENID, articles, function (error, data) {
+      service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
         assert.equal(true, !error);
         if (data.errcode !== 45015) {
           assert.equal(true, data.errcode === 0);
@@ -131,7 +136,7 @@ describe('node-weixin-message', function () {
   });
   //describe('#account', function() {
   //  it('it should be able to add an account', function (done) {
-  //    service.account.add(app, auth, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
+  //    service.account.add(app, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
   //      console.log(error, data);
   //        assert.equal(true, !error);
   //        assert.equal(true, data.errcode === 0);
@@ -141,7 +146,7 @@ describe('node-weixin-message', function () {
   //  });
   //
   //  it('it should be able to update an account', function (done) {
-  //    service.account.update(app, auth, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
+  //    service.account.update(app, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
   //      console.log(error, data);
   //      assert.equal(true, !error);
   //      assert.equal(true, data.errcode === 0);
@@ -151,7 +156,7 @@ describe('node-weixin-message', function () {
   //  });
   //
   //  it('it should be able to delete an account', function (done) {
-  //    service.account.remove(app, auth, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
+  //    service.account.remove(app, 'test1@test', '96e79218965eb72c92a549dd5a330112', 'guest1', function (error, data) {
   //      console.log(error, data);
   //      assert.equal(true, !error);
   //      assert.equal(true, data.errcode === 0);
