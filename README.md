@@ -83,10 +83,11 @@ var messages = nodeWeixinMessage.messages;
 //处理接收消息
 
 //需要通过parse分析消息，然后再通知相应的处理方法，这个代码需要放在ack服务器的返回处理
-//messages.parse(json);
+//messages.parse(json, res);
+//res是HTTP的res
 
 //接收文本
-messages.on.text(function(message) {
+messages.on.text(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -96,7 +97,7 @@ messages.on.text(function(message) {
 });
 
 //接收图片
-messages.on.image(function(message) {
+messages.on.image(function(message, res) {
  //message.FromUserName
  //message.ToUserName
  //message.CreateTime
@@ -107,7 +108,7 @@ messages.on.image(function(message) {
 });
 
 //接收语音
-messages.on.voice(function(message) {
+messages.on.voice(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -119,7 +120,7 @@ messages.on.voice(function(message) {
 });
 
 //接收视频
-messages.on.video(function(message) {
+messages.on.video(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -130,7 +131,7 @@ messages.on.video(function(message) {
 });
 
 //接收短视频
-messages.on.shortvideo(function(message) {
+messages.on.shortvideo(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -141,7 +142,7 @@ messages.on.shortvideo(function(message) {
 });
 
 //接收位置信息
-messages.on.location(function(message) {
+messages.on.location(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -154,7 +155,7 @@ messages.on.location(function(message) {
 });
 
 //接收链接
-messages.on.link(function(message) {
+messages.on.link(function(message, res) {
   //message.FromUserName
   //message.ToUserName
   //message.CreateTime
@@ -171,35 +172,36 @@ messages.on.link(function(message) {
 
 ```js
 
-//以下消息也都是基于messages.parse(json);
+//以下消息也都是基于messages.parse(json, res);
+//res是HTTP的res
 
 //处理用户订阅
-messages.event.on.subscribe(function (message) {
+messages.event.on.subscribe(function (message, res) {
 });
 
 //处理用户退订
-messages.event.on.unsubscribe(function (message) {
+messages.event.on.unsubscribe(function (message, res) {
 });
 
 //处理扫描带参数二维码事件
-messages.event.on.scan(function (message) {
+messages.event.on.scan(function (message, res) {
 });
 
 //处理上报地理位置事件  
-messages.event.on.location(function (message) {
+messages.event.on.location(function (message, res) {
 });
 
 
 //处理点击菜单拉取消息时的事件
-messages.event.on.click(function (message) {
+messages.event.on.click(function (message, res) {
 });
 
 //处理点击菜单跳转链接时的事件
-messages.event.on.view(function (message) {
+messages.event.on.view(function (message, res) {
 });
 
 //处理模块消息发送事件
-messages.event.on.templatesendjobfinish(function (message) {
+messages.event.on.templatesendjobfinish(function (message, res) {
 });
 
 
