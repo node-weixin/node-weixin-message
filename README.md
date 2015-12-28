@@ -172,36 +172,35 @@ messages.on.link(function(message, res) {
 
 ```js
 
-//以下消息也都是基于messages.parse(json, res);
-//res是HTTP的res
+//以下消息也都是基于messages.parse(json);
 
 //处理用户订阅
-messages.event.on.subscribe(function (message, res) {
+messages.event.on.subscribe(function (message) {
 });
 
 //处理用户退订
-messages.event.on.unsubscribe(function (message, res) {
+messages.event.on.unsubscribe(function (message) {
 });
 
 //处理扫描带参数二维码事件
-messages.event.on.scan(function (message, res) {
+messages.event.on.scan(function (message) {
 });
 
 //处理上报地理位置事件  
-messages.event.on.location(function (message, res) {
+messages.event.on.location(function (message) {
 });
 
 
 //处理点击菜单拉取消息时的事件
-messages.event.on.click(function (message, res) {
+messages.event.on.click(function (message) {
 });
 
 //处理点击菜单跳转链接时的事件
-messages.event.on.view(function (message, res) {
+messages.event.on.view(function (message) {
 });
 
 //处理模块消息发送事件
-messages.event.on.templatesendjobfinish(function (message, res) {
+messages.event.on.templatesendjobfinish(function (message) {
 });
 
 
