@@ -261,20 +261,20 @@ res.send(news);
 var template = nodeWeixinMessage.template;
 
 //设置行业属性
-template.setIndustry(app, auth, '1', '2', function (error, data) {
+template.setIndustry(app, '1', '2', function (error, data) {
   //data.errcode
   //data.errmsg
 });
 
 //获取模板
-template.get(app, auth, 'TM00015', function (error, data) {
+template.get(app, 'TM00015', function (error, data) {
   //data.errcode
   //data.errmsg
   //data.template_id;
 });
 
 //发送模板
-template.send(app, auth, process.env.APP_OPENID, templateId, 'http://www.qq.com', {
+template.send(app, process.env.APP_OPENID, templateId, 'http://www.qq.com', {
   "first": {
     "value":"恭喜你购买成功！",
     "color":"#173177"
@@ -306,32 +306,32 @@ var service = nodeWeixinMessage.service;
 
 
 //回复文本消息
-service.api.text(app, auth, process.env.APP_OPENID, 'hello', function (error, data) {
+service.api.text(app, process.env.APP_OPENID, 'hello', function (error, data) {
   //data.errcode
   //data.errmsg
 });
 
 //回复图片
-service.api.image(app, auth, process.env.APP_OPENID, mediaId, function (error, data) {
+service.api.image(app, process.env.APP_OPENID, mediaId, function (error, data) {
   //data.errcode
   //data.errmsg
 });
 
 //回复语音
-service.api.voice(app, auth, process.env.APP_OPENID, mediaId, function (error, data) {
+service.api.voice(app, process.env.APP_OPENID, mediaId, function (error, data) {
   //data.errcode
   //data.errmsg
 });
 
 //回复视频
-service.api.video(app, auth, process.env.APP_OPENID, 'title', 'desc',
+service.api.video(app, process.env.APP_OPENID, 'title', 'desc',
  mediaId, thumbMediaId, function (error, data) {
   //data.errcode
   //data.errmsg
 });
 
 //回复音乐
-service.api.music(app, auth, process.env.APP_OPENID,
+service.api.music(app, process.env.APP_OPENID,
   'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',
   'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',  //高品质音乐URL
   thumbMediaId,
@@ -357,7 +357,7 @@ var articles = [
   }
 ];
 
-service.api.news(app, auth, process.env.APP_OPENID, articles, function (error, data) {
+service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
   //data.errcode
   //data.errmsg
 });
