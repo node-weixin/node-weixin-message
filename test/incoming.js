@@ -50,7 +50,6 @@ describe('node-weixin-message', function () {
 
   it('it should be able to handle incoming voice', function (done) {
     var messages = nodeWeixinMessage.messages;
-
     messages.on.voice(function(message) {
       assert.equal(true, message.FromUserName === 'fromUser');
       assert.equal(true, message.ToUserName === 'toUser');
@@ -137,6 +136,40 @@ describe('node-weixin-message', function () {
 
   it('it should be able to handle incoming link', function (done) {
     var messages = nodeWeixinMessage.messages;
+
+    messages.on.link(function(message) {
+      assert.equal(true, message.FromUserName === 'fromUser');
+      assert.equal(true, message.ToUserName === 'toUser');
+      assert.equal(true, message.CreateTime === '1351776360');
+      assert.equal(true, message.MsgType === 'link');
+      assert.equal(true, message.Title === '公众平台官网链接');
+      assert.equal(true, message.Description === '公众平台官网链接');
+      assert.equal(true, message.Url === 'url');
+      assert.equal(true, message.MsgId === '1234567890123456');
+      done();
+    });
+    var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
+    x2j.parseString(xml, {
+      explicitArray: false, ignoreAttrs: true
+    }, function (error, json) {
+      messages.parse(json.xml);
+    });
+  });
+
+  it('should not be invoked more than once', function(done) {
+
+    var messages = nodeWeixinMessage.messages;
+    var AVisited = false;
+    var BVisited = false;
+    var A = function() {
+      AVisited = true;
+    };
+    var B = function() {
+      BVisited = true;
+    };
+
+    messages.on.link(A);
+    messages.on.link(B);
 
     messages.on.link(function(message) {
       assert.equal(true, message.FromUserName === 'fromUser');
