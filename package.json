@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-message",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Weixin message handling",
   "author": {
     "name": "calidion",
@@ -23,12 +23,11 @@
   ],
   "dependencies": {
     "ect": "^0.5.9",
-    "ejs": "^2.3.4",
     "lodash": "^4.0.0",
     "meow": "^3.1.0",
-    "node-weixin-auth": "^0.2.7",
+    "node-weixin-auth": "^0.3.0",
     "node-weixin-request": "^0.3.0",
-    "node-weixin-settings": "0.0.6",
+    "node-weixin-settings": "0.1.0",
     "node-weixin-util": "^0.2.0"
   },
   "devDependencies": {
