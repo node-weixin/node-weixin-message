@@ -165,6 +165,7 @@ describe('node-weixin-message', function () {
   //    });
   //  });
   //});
+  
   describe('#account', function () {
     it('it should be able to list online kfs', function (done) {
       service.account.online(app, function (error, data) {
