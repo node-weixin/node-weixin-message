@@ -9,7 +9,7 @@ var app = {
 };
 
 describe('node-weixin-message', function () {
-  describe("#template", function () {
+  describe('#template', function () {
     var templateId = null;
     it('it should be able to set industry', function (done) {
       nodeWeixinMessage.template.setIndustry(app, '1', '2', function (error, data) {
@@ -36,21 +36,21 @@ describe('node-weixin-message', function () {
 
     it('it should be able to send template', function (done) {
       nodeWeixinMessage.template.send(app, process.env.APP_OPENID, templateId, 'http://www.qq.com', {
-        "first": {
-          "value": "恭喜你购买成功！",
-          "color": "#173177"
+        first: {
+          value: '恭喜你购买成功！',
+          color: '#173177'
         },
-        "orderMoneySum": {
-          "value": "102.82",
-          "color": "#173177"
+        orderMoneySum: {
+          value: '102.82',
+          color: '#173177'
         },
-        "orderProductName": {
-          "value": "田一块",
-          "color": "# 383232"
+        orderProductName: {
+          value: '田一块',
+          color: '# 383232'
         },
-        "remark": {
-          "value": "欢迎再次购买！",
-          "color": "#173177"
+        remark: {
+          value: '欢迎再次购买！',
+          color: '#173177'
         }
       }, function (error, data) {
         assert.equal(true, !error);

@@ -1,5 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]  [![Coveralls Status][coveralls-image]][coveralls-url]
-
+# node-weixin-message [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > Weixin message handling
 
 微信消息处理
@@ -225,7 +224,7 @@ var video = reply.video('FromUserName', 'ToUserName', 'mediaId', 'title', 'desc'
 res.send(video);
 
 //回复音乐
-var music = reply.music('FromUserName', 'ToUserName', 'mediaId', 'title', 
+var music = reply.music('FromUserName', 'ToUserName', 'mediaId', 'title',
 'desc', 'http://www.musicurl.com', 'http://www.hightQualitymusicurl.com');
 res.send(music);
 
@@ -362,12 +361,11 @@ service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
   //data.errmsg
 });
 
-
 ```
 
 ## License
 
-MIT © [node-weixin](www.node-weixin.com)
+Apache-2.0 © [calidion](calidion.github.io)
 
 
 [npm-image]: https://badge.fury.io/js/node-weixin-message.svg
@@ -376,5 +374,5 @@ MIT © [node-weixin](www.node-weixin.com)
 [travis-url]: https://travis-ci.org/node-weixin/node-weixin-message
 [daviddm-image]: https://david-dm.org/node-weixin/node-weixin-message.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/node-weixin/node-weixin-message
-[coveralls-image]: https://coveralls.io/repos/node-weixin/node-weixin-message/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/node-weixin/node-weixin-message?branch=master
+[coveralls-image]: https://coveralls.io/repos/node-weixin/node-weixin-message/badge.svg
+[coveralls-url]: https://coveralls.io/r/node-weixin/node-weixin-message
