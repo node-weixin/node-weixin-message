@@ -365,6 +365,31 @@ service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
 
 ```
 
+### 客服在线接待信息
+
+```
+service.account.online(app, function (error, data) {
+  //data.kf_online_list
+});
+
+```js
+
+### 模板消息管理
+
+```
+service.manage.industry(app, 1, 2, function (error, data ) {
+  //data.errcode
+  //data.errmsg
+});
+
+service.manage.template(app, 'TM00015', function (error, data ) {
+  //data.errcode
+  //data.errmsg
+});
+
+
+```js
+
 ## License
 
 MIT © [node-weixin](www.node-weixin.com)

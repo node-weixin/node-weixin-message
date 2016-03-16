@@ -175,4 +175,20 @@ describe('node-weixin-message', function () {
       });
     });
   });
+
+  describe('#manage', function () {
+    it('it should be able to set industry', function (done) {
+      service.manage.industry(app, 1, 2, function (error, data) {
+        assert.equal(true, data.errcode === 43100);
+        done();
+      });
+    });
+    it('it should be able to get template id', function (done) {
+      service.manage.template(app, 'TM00015', function (error, data) {
+        assert.equal(true, data.errcode === 0);
+        assert.equal(true, typeof data.template_id === 'string');
+        done();
+      });
+    });
+  });
 });
