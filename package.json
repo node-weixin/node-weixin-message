@@ -17,6 +17,8 @@
   ],
   "devDependencies": {
     "eslint-config-xo-space": "^0.7.0",
+    "xml2js": "^0.4.16",
+    "node-weixin-media": "^0.3.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
@@ -41,7 +43,6 @@
   "dependencies": {
     "ect": "^0.5.9",
     "node-weixin-auth": "^0.5.0",
-    "node-weixin-media": "^0.3.0",
     "node-weixin-request": "^0.4.0",
     "node-weixin-settings": "^0.2.0",
     "node-weixin-util": "^0.3.1"
