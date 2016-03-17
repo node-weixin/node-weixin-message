@@ -1,55 +1,51 @@
 {
   "name": "node-weixin-message",
-  "version": "0.0.5",
-  "description": "Weixin message handling",
+  "version": "0.0.6",
+  "description": "",
+  "homepage": "",
   "author": {
     "name": "calidion",
     "email": "calidion@gmail.com",
-    "url": "blog.3gcnbeta.com"
+    "url": "calidion.github.io"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    ""
+  ],
+  "devDependencies": {
+    "eslint-config-xo-space": "^0.7.0",
+    "xml2js": "^0.4.16",
+    "node-weixin-media": "^0.3.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-coveralls": "^0.1.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
   },
   "repository": "node-weixin/node-weixin-message",
-  "license": "MIT",
-  "files": [
-    "index.js",
-    "cli.js",
-    "lib",
-    "assets"
-  ],
-  "keywords": [
-    "node-weixin-message",
-    "node",
-    "weixin",
-    "message"
-  ],
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "Apache-2.0",
   "dependencies": {
     "ect": "^0.5.9",
-    "lodash": "^4.0.0",
-    "meow": "^3.1.0",
-    "node-weixin-auth": "^0.3.0",
-    "node-weixin-request": "^0.3.0",
-    "node-weixin-settings": "0.1.0",
-    "node-weixin-util": "^0.2.0"
-  },
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-cli": "^2.0.0",
-    "istanbul": "^0.4.1",
-    "jshint-stylish": "^2.1.0",
-    "load-grunt-tasks": "^3.1.0",
-    "mocha": "^2.3.4",
-    "node-weixin-media": "^0.2.2",
-    "time-grunt": "^1.1.0",
-    "xml2js": "^0.4.15"
-  },
-  "scripts": {
-    "test": "grunt",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
-  },
-  "bin": {
-    "node-weixin-message": "cli.js"
+    "lodash": "^4.6.1",
+    "node-weixin-auth": "^0.5.0",
+    "node-weixin-request": "^0.4.0",
+    "node-weixin-settings": "^0.2.0",
+    "node-weixin-util": "^0.3.1"
   }
 }
