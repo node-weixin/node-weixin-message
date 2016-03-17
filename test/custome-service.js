@@ -20,15 +20,15 @@ var media = require('node-weixin-media');
 
 var shareId = null;
 
-describe('node-weixin-message', function() {
-  it('should init', function(done) {
-    auth.determine(app, function() {
+describe('node-weixin-message', function () {
+  it('should init', function (done) {
+    auth.determine(app, function () {
       done();
     });
   });
-  describe('#api', function() {
-    it('it should be able to handle text event', function(done) {
-      service.api.text(app, process.env.APP_OPENID, 'hello', function(error, data) {
+  describe('#api', function () {
+    it('it should be able to handle text event', function (done) {
+      service.api.text(app, process.env.APP_OPENID, 'hello', function (error, data) {
         assert.equal(true, !error);
         if (data.errcode !== 45015) {
           assert.equal(true, data.errcode === 0);
@@ -37,13 +37,13 @@ describe('node-weixin-message', function() {
         done();
       });
     });
-    it('it should be able to handle image event', function(done) {
+    it('it should be able to handle image event', function (done) {
       var file = path.resolve(__dirname, 'media/test.png');
-      media.temporary.create(app, 'image', file, function(error, json) {
+      media.temporary.create(app, 'image', file, function (error, json) {
         // json.type
         // json.media_id
 
-        var callback = function(error, data) {
+        var callback = function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -55,9 +55,9 @@ describe('node-weixin-message', function() {
       });
     });
 
-    it('it should be able to handle thumb event', function(done) {
+    it('it should be able to handle thumb event', function (done) {
       var file = path.resolve(__dirname, 'media/test.png');
-      media.temporary.create(app, 'thumb', file, function(error, json) {
+      media.temporary.create(app, 'thumb', file, function (error, json) {
         // json.type
         // json.media_id
         shareId = json.thumb_media_id;
@@ -65,12 +65,12 @@ describe('node-weixin-message', function() {
       });
     });
 
-    it('it should be able to handle voice event', function(done) {
+    it('it should be able to handle voice event', function (done) {
       var file = path.resolve(__dirname, 'media/test.amr');
-      media.temporary.create(app, 'voice', file, function(error, json) {
+      media.temporary.create(app, 'voice', file, function (error, json) {
         // json.type
         // json.media_id
-        service.api.voice(app, process.env.APP_OPENID, json.media_id, function(error, data) {
+        service.api.voice(app, process.env.APP_OPENID, json.media_id, function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -81,12 +81,12 @@ describe('node-weixin-message', function() {
       });
     });
 
-    it('it should be able to handle video event', function(done) {
+    it('it should be able to handle video event', function (done) {
       var file = path.resolve(__dirname, 'media/test.mp4');
-      media.temporary.create(app, 'video', file, function(error, json) {
+      media.temporary.create(app, 'video', file, function (error, json) {
         // json.type
         // json.media_id
-        service.api.video(app, process.env.APP_OPENID, 'title', 'desc', json.media_id, shareId, function(error, data) {
+        service.api.video(app, process.env.APP_OPENID, 'title', 'desc', json.media_id, shareId, function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -97,14 +97,14 @@ describe('node-weixin-message', function() {
       });
     });
 
-    it('it should be able to handle music event', function(done) {
+    it('it should be able to handle music event', function (done) {
       service.api.music(app, process.env.APP_OPENID,
         'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',
         'http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2015.mp3',
         shareId,
         'title',
         'desc',
-        function(error, data) {
+        function (error, data) {
           assert.equal(true, !error);
           if (data.errcode !== 45015) {
             assert.equal(true, data.errcode === 0);
@@ -114,7 +114,7 @@ describe('node-weixin-message', function() {
         });
     });
 
-    it('it should be able to handle news event', function(done) {
+    it('it should be able to handle news event', function (done) {
       var articles = [{
         title: 'Happy Day',
         description: 'Is Really A Happy Day',
@@ -127,7 +127,7 @@ describe('node-weixin-message', function() {
         picurl: 'https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&action=index&tofakeid=1866487131&token=1650197120&lang=zh_CN'
       }];
 
-      service.api.news(app, process.env.APP_OPENID, articles, function(error, data) {
+      service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
         assert.equal(true, !error);
         if (data.errcode !== 45015) {
           assert.equal(true, data.errcode === 0);
@@ -169,29 +169,30 @@ describe('node-weixin-message', function() {
   //  });
   // });
   //
-  // describe('#account', function() {
-  //   it('it should be able to list online kfs', function(done) {
-  //     service.account.online(app, function(error, data) {
-  //       assert.equal(true, !error);
-  //       assert.equal(true, data.kf_online_list.length >= 0);
-  //       done();
-  //     });
-  //   });
-  // });
+  /*describe('#account', function () {
+   it('it should be able to list online kfs', function (done) {
+   service.account.online(app, function (error, data) {
+   console.log(error, data);
+   assert.equal(true, !error);
+   assert.equal(true, data.kf_online_list.length >= 0);
+   done();
+   });
+   });
+   });*/
 
-  describe('#manage', function() {
-    it('it should be able to set industry', function(done) {
-      service.manage.industry(app, 1, 2, function(error, data) {
+  describe('#manage', function () {
+    it('it should be able to set industry', function (done) {
+      service.manage.industry(app, 1, 2, function (error, data) {
         assert.equal(true, data.errcode === 43100);
         done();
       });
     });
-    // it('it should be able to get template id', function(done) {
-    //   service.manage.template(app, 'TM00015', function(error, data) {
-    //     assert.equal(true, data.errcode === 0);
-    //     assert.equal(true, typeof data.template_id === 'string');
-    //     done();
-    //   });
-    // });
+    it('it should be able to get template id', function (done) {
+      service.manage.template(app, 'TM00015', function (error, data) {
+        assert.equal(true, data.errcode === 0 || data.errcode === 45026);
+        assert.equal(true, typeof data.template_id === 'string');
+        done();
+      });
+    });
   });
 });
