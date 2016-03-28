@@ -7,7 +7,7 @@
 
 nodejs微信开发交流QQ群： 39287176
 
-## 是node-weixin项目的子项目
+## node-weixin项目的子项目
 
   node-weixin项目是一个旨在帮助微信开发与使用的全面的技术支持平台项目。
 
@@ -17,6 +17,7 @@ nodejs微信开发交流QQ群： 39287176
 
   2. [node-weixin-api](https://github.com/node-weixin/node-weixin-api)
     它是基于node-weixin-*所实现的API所组合而成的接口。
+
 ## 安装
 
 ```sh
@@ -28,6 +29,7 @@ $ npm install --save node-weixin-message
 ```js
 var nodeWeixinMessage = require('node-weixin-message');
 ```
+
 ## 消息处理
 
 
@@ -55,7 +57,6 @@ service.account.list(app, function (error, data) {
 
 ```
 
-
 ### 客服在线接待信息
 
 ```js
@@ -64,7 +65,6 @@ service.account.online(app, function (error, data) {
 });
 
 ```
-
 
 ### 模板消息管理
 
@@ -78,7 +78,6 @@ service.manage.template(app, 'TM00015', function (error, data ) {
   //data.errcode
   //data.errmsg
 });
-
 
 ```
 
