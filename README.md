@@ -363,18 +363,29 @@ service.api.news(app, process.env.APP_OPENID, articles, function (error, data) {
 
 ```
 
-### 客服在线接待信息
+### 客服接待列表信息
+
+```js
+service.account.list(app, function (error, data) {
+  //data
+});
 
 ```
+
+
+### 客服在线接待信息
+
+```js
 service.account.online(app, function (error, data) {
   //data.kf_online_list
 });
 
-```js
+```
+
 
 ### 模板消息管理
 
-```
+```js
 service.manage.industry(app, 1, 2, function (error, data ) {
   //data.errcode
   //data.errmsg
@@ -386,7 +397,7 @@ service.manage.template(app, 'TM00015', function (error, data ) {
 });
 
 
-```js
+```
 
 ## License
 
