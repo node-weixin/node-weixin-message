@@ -336,7 +336,6 @@ describe('node-weixin-message', function() {
 
     function http(req, res) {
       var messages = nodeWeixinMessage.messages;
-
       function A(message, res, cb, more) {
         assert.equal(res, r2);
         assert.equal(more, 'and more');
@@ -356,5 +355,4 @@ describe('node-weixin-message', function() {
     }
     http(r1, r2);
   });
-
 });
