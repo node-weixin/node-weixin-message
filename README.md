@@ -34,21 +34,29 @@ var nodeWeixinMessage = require('node-weixin-message');
 //在http请求里的处理方式
 app.get('weixin/text', function(req, res) {
   var messages = nodeWeixinMessage.messages;
-  function text(message) {
-    //只会被调用一次
+
+  function text(message, res, callback, extra) {
+    //message => 解析后的JSON
+    //res => res
+    //callback => callback
+    //extra => 'some data',
+
+    //Extra
     res.send(message);
   }
-  //多次相同的回调函数只会被调用一次
-  messages.on.text(text);
-  messages.on.text(text);
-  messages.on.text(text);
 
-  x2j.parseString(req.body, {
-    explicitArray: false,
-    ignoreAttrs: true
-  }, function(error, json) {
-    messages.parse(json.xml);
-  });
+  //多次侦听相同的回调函数只会被调用一次
+  messages.on.text(text);
+  messages.on.text(text);
+  messages.on.text(text);
+  messages.onXML(req.body, res, function callback(message) {
+    //After message handled.
+  }
+  //后面可以接系统允许的最大数量的参数，只要跟text的处理函数一一对应就可以了。
+  //唯一不同的是req.body会被解析成JSON
+  //,
+  //'some data');
+
 });
 ```
 

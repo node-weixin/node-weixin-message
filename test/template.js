@@ -55,7 +55,7 @@ describe('node-weixin-message', function () {
       }, function (error, data) {
         assert.equal(true, !error);
         if (data.errcode === 40036) {
-          console.log(error, data);
+          console.error(error, data);
         } else {
           assert.equal(true, data.errcode === 0);
           assert.equal(true, data.errmsg === 'ok');

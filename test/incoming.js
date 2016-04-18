@@ -355,4 +355,35 @@ describe('node-weixin-message', function() {
     }
     http(r1, r2);
   });
+
+  it('should not be able to use onXML', function(done) {
+    var r1 = {};
+    var r2 = {};
+    r2.send = function(message) {
+      assert.equal(true, message.FromUserName === 'fromUser');
+      assert.equal(true, message.ToUserName === 'toUser');
+      assert.equal(true, message.CreateTime === '1351776360');
+      assert.equal(true, message.MsgType === 'link');
+      assert.equal(true, message.Title === '公众平台官网链接');
+      assert.equal(true, message.Description === '公众平台官网链接');
+      assert.equal(true, message.Url === 'url');
+      assert.equal(true, message.MsgId === '1234567890123456');
+    };
+
+    function http(req, res) {
+      var messages = nodeWeixinMessage.messages;
+      function A(message, res, cb, more) {
+        assert.equal(res, r2);
+        assert.equal(more, 'and more');
+        res.send(message);
+        cb();
+      }
+      messages.on.link(A);
+      var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
+      messages.onXML(xml, res, function() {
+        done();
+      }, 'and more');
+    }
+    http(r1, r2);
+  });
 });
