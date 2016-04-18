@@ -207,6 +207,7 @@ describe('node-weixin-message', function() {
   it('should not be able to handle the same function only once', function(done) {
     var messages = nodeWeixinMessage.messages;
     var time = 0;
+
     function A() {
       time++;
     }
@@ -229,6 +230,7 @@ describe('node-weixin-message', function() {
   it('should not be able to handle the same function only once', function(done) {
     var messages = nodeWeixinMessage.messages;
     var time = 0;
+
     function A() {
       time++;
     }
@@ -250,6 +252,7 @@ describe('node-weixin-message', function() {
 
   it('should not be able to parse as many times without warning', function(done) {
     var count = 100;
+    var time = 0;
     var r1 = {};
     var r2 = {};
     r2.send = function() {
@@ -261,7 +264,7 @@ describe('node-weixin-message', function() {
         return done();
       }
     };
-    var time = 0;
+
     function http(req, res) {
       var messages = nodeWeixinMessage.messages;
 
@@ -286,7 +289,7 @@ describe('node-weixin-message', function() {
   it('should not be able to pass res to handler', function(done) {
     var r1 = {};
     var r2 = {};
-    r2.send = function(message, res) {
+    r2.send = function(message) {
       assert.equal(true, message.FromUserName === 'fromUser');
       assert.equal(true, message.ToUserName === 'toUser');
       assert.equal(true, message.CreateTime === '1351776360');
@@ -297,12 +300,13 @@ describe('node-weixin-message', function() {
       assert.equal(true, message.MsgId === '1234567890123456');
       done();
     };
+
     function http(req, res) {
       var messages = nodeWeixinMessage.messages;
 
       function A(message, res) {
         assert.equal(res, r2);
-        res.send(message, res);
+        res.send(message);
       }
       messages.on.link(A);
       var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
@@ -311,6 +315,43 @@ describe('node-weixin-message', function() {
         ignoreAttrs: true
       }, function(error, json) {
         messages.parse(json.xml, res);
+      });
+    }
+    http(r1, r2);
+  });
+
+  it('should not be able to pass more things to handler', function(done) {
+    var r1 = {};
+    var r2 = {};
+    r2.send = function(message) {
+      assert.equal(true, message.FromUserName === 'fromUser');
+      assert.equal(true, message.ToUserName === 'toUser');
+      assert.equal(true, message.CreateTime === '1351776360');
+      assert.equal(true, message.MsgType === 'link');
+      assert.equal(true, message.Title === '公众平台官网链接');
+      assert.equal(true, message.Description === '公众平台官网链接');
+      assert.equal(true, message.Url === 'url');
+      assert.equal(true, message.MsgId === '1234567890123456');
+    };
+
+    function http(req, res) {
+      var messages = nodeWeixinMessage.messages;
+
+      function A(message, res, cb, more) {
+        assert.equal(res, r2);
+        assert.equal(more, 'and more');
+        res.send(message);
+        cb();
+      }
+      messages.on.link(A);
+      var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
+      x2j.parseString(xml, {
+        explicitArray: false,
+        ignoreAttrs: true
+      }, function(error, json) {
+        messages.parse(json.xml, res, function callback() {
+          done();
+        }, 'and more');
       });
     }
     http(r1, r2);

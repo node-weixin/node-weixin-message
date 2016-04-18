@@ -29,6 +29,27 @@ $ npm install --save node-weixin-message
 
 ```js
 var nodeWeixinMessage = require('node-weixin-message');
+
+
+//在http请求里的处理方式
+app.get('weixin/text', function(req, res) {
+  var messages = nodeWeixinMessage.messages;
+  function text(message) {
+    //只会被调用一次
+    res.send(message);
+  }
+  //多次相同的回调函数只会被调用一次
+  messages.on.text(text);
+  messages.on.text(text);
+  messages.on.text(text);
+
+  x2j.parseString(req.body, {
+    explicitArray: false,
+    ignoreAttrs: true
+  }, function(error, json) {
+    messages.parse(json.xml);
+  });
+});
 ```
 
 ## 消息处理
