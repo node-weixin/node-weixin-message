@@ -369,16 +369,16 @@ describe('node-weixin-message', function() {
       assert.equal(true, message.Url === 'url');
       assert.equal(true, message.MsgId === '1234567890123456');
     };
+    var messages = nodeWeixinMessage.messages;
+    function A(message, res, cb, more) {
+      assert.equal(res, r2);
+      assert.equal(more, 'and more');
+      res.send(message);
+      cb();
+    }
+    messages.on.link(A);
 
     function http(req, res) {
-      var messages = nodeWeixinMessage.messages;
-      function A(message, res, cb, more) {
-        assert.equal(res, r2);
-        assert.equal(more, 'and more');
-        res.send(message);
-        cb();
-      }
-      messages.on.link(A);
       var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
       messages.onXML(xml, res, function() {
         done();
