@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-message",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "",
   "homepage": "",
   "author": {
@@ -18,16 +18,17 @@
   ],
   "devDependencies": {
     "eslint-config-xo-space": "^0.7.0",
-    "xml2js": "^0.4.16",
-    "node-weixin-media": "^0.3.0",
     "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-coveralls": "^0.1.0"
+    "gulp-plumber": "^1.0.0",
+    "node-weixin-media": "^0.5.0",
+    "node-weixin-settings": "^0.2.0",
+    "xml2js": "^0.4.16"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -44,9 +45,8 @@
   "dependencies": {
     "ect": "^0.5.9",
     "lodash": "^4.6.1",
-    "node-weixin-auth": "^0.5.0",
+    "node-weixin-auth": "^0.6.0",
     "node-weixin-request": "^0.4.0",
-    "node-weixin-settings": "^0.2.0",
     "node-weixin-util": "^0.3.1",
     "request": "^2.69.0"
   }

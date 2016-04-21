@@ -1,6 +1,8 @@
 'use strict';
 var assert = require('assert');
 var nodeWeixinMessage = require('../');
+var settings = require('node-weixin-settings');
+
 
 var app = {
   id: process.env.APP_ID,
@@ -12,7 +14,7 @@ describe('node-weixin-message', function () {
   describe('#template', function () {
     var templateId = null;
     it('it should be able to set industry', function (done) {
-      nodeWeixinMessage.template.setIndustry(app, '1', '2', function (error, data) {
+      nodeWeixinMessage.template.setIndustry(settings, app, '1', '2', function (error, data) {
         assert.equal(true, !error);
         assert.equal(true, (data.errcode === 0 && data.errmsg === 'ok') ||
           (data.errcode === 43100 && data.errmsg.indexOf('change template too frequently hint') !== -1));
@@ -21,7 +23,7 @@ describe('node-weixin-message', function () {
     });
 
     it('it should be able to get template', function (done) {
-      nodeWeixinMessage.template.get(app, 'TM00015', function (error, data) {
+      nodeWeixinMessage.template.get(settings, app, 'TM00015', function (error, data) {
         templateId = data.template_id;
         assert.equal(true, !error);
         if (data.errcode !== 45026) {
@@ -35,7 +37,7 @@ describe('node-weixin-message', function () {
     });
 
     it('it should be able to send template', function (done) {
-      nodeWeixinMessage.template.send(app, process.env.APP_OPENID, templateId, 'http://www.qq.com', {
+      nodeWeixinMessage.template.send(settings, app, process.env.APP_OPENID, templateId, 'http://www.qq.com', {
         first: {
           value: '恭喜你购买成功！',
           color: '#173177'
