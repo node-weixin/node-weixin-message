@@ -3,7 +3,6 @@ var assert = require('assert');
 var nodeWeixinMessage = require('../');
 var settings = require('node-weixin-settings');
 
-
 var app = {
   id: process.env.APP_ID,
   secret: process.env.APP_SECRET,
