@@ -111,6 +111,13 @@ service.manage.template(settings, app, 'TM00015', function (error, data ) {
 
 ```
 
+### 消息解密
+
+```js
+messages.parseEncrypt(appToken, appEncodingAESKey, query, body);
+
+```
+
 ## License
 
 Apache-2.0 © [calidion](calidion.github.io)

@@ -11,17 +11,24 @@ var path = require('path');
 
 var x2j = require('xml2js');
 
+var app = {
+  id: process.env.APP_ID,
+  secret: process.env.APP_SECRET,
+  token: process.env.APP_TOKEN,
+  encodingaeskey: process.env.APP_ENCODINGAESKEY
+};
+
 describe('node-weixin-message', function() {
   it('it should be able to handle incoming text', function(done) {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.text(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1348831860');
-      assert.equal(true, message.MsgType === 'text');
-      assert.equal(true, message.Content === 'this is a test');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1348831860');
+      assert.strictEqual(true, message.MsgType === 'text');
+      assert.strictEqual(true, message.Content === 'this is a test');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/text.xml'));
@@ -37,13 +44,13 @@ describe('node-weixin-message', function() {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.image(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1348831860');
-      assert.equal(true, message.MsgType === 'image');
-      assert.equal(true, message.PicUrl === 'this is a url');
-      assert.equal(true, message.MediaId === 'media_id');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1348831860');
+      assert.strictEqual(true, message.MsgType === 'image');
+      assert.strictEqual(true, message.PicUrl === 'this is a url');
+      assert.strictEqual(true, message.MediaId === 'media_id');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/image.xml'));
@@ -58,14 +65,14 @@ describe('node-weixin-message', function() {
   it('it should be able to handle incoming voice', function(done) {
     var messages = nodeWeixinMessage.messages;
     messages.on.voice(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1357290913');
-      assert.equal(true, message.MsgType === 'voice');
-      assert.equal(true, message.Format === 'Format');
-      assert.equal(true, message.Recognition === '腾讯微信团队');
-      assert.equal(true, message.MediaId === 'media_id');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1357290913');
+      assert.strictEqual(true, message.MsgType === 'voice');
+      assert.strictEqual(true, message.Format === 'Format');
+      assert.strictEqual(true, message.Recognition === '腾讯微信团队');
+      assert.strictEqual(true, message.MediaId === 'media_id');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/voice.xml'));
@@ -81,13 +88,13 @@ describe('node-weixin-message', function() {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.video(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1357290913');
-      assert.equal(true, message.MsgType === 'video');
-      assert.equal(true, message.ThumbMediaId === 'thumb_media_id');
-      assert.equal(true, message.MediaId === 'media_id');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1357290913');
+      assert.strictEqual(true, message.MsgType === 'video');
+      assert.strictEqual(true, message.ThumbMediaId === 'thumb_media_id');
+      assert.strictEqual(true, message.MediaId === 'media_id');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/video.xml'));
@@ -103,13 +110,13 @@ describe('node-weixin-message', function() {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.shortvideo(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1357290913');
-      assert.equal(true, message.MsgType === 'shortvideo');
-      assert.equal(true, message.ThumbMediaId === 'thumb_media_id');
-      assert.equal(true, message.MediaId === 'media_id');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1357290913');
+      assert.strictEqual(true, message.MsgType === 'shortvideo');
+      assert.strictEqual(true, message.ThumbMediaId === 'thumb_media_id');
+      assert.strictEqual(true, message.MediaId === 'media_id');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/shortvideo.xml'));
@@ -125,15 +132,15 @@ describe('node-weixin-message', function() {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.location(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'location');
-      assert.equal(true, message.Location_X === '23.134521');
-      assert.equal(true, message.Location_Y === '113.358803');
-      assert.equal(true, message.Scale === '20');
-      assert.equal(true, message.Label === '位置信息');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'location');
+      assert.strictEqual(true, message.Location_X === '23.134521');
+      assert.strictEqual(true, message.Location_Y === '113.358803');
+      assert.strictEqual(true, message.Scale === '20');
+      assert.strictEqual(true, message.Label === '位置信息');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/location.xml'));
@@ -149,14 +156,14 @@ describe('node-weixin-message', function() {
     var messages = nodeWeixinMessage.messages;
 
     messages.on.link(function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'link');
-      assert.equal(true, message.Title === '公众平台官网链接');
-      assert.equal(true, message.Description === '公众平台官网链接');
-      assert.equal(true, message.Url === 'url');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'link');
+      assert.strictEqual(true, message.Title === '公众平台官网链接');
+      assert.strictEqual(true, message.Description === '公众平台官网链接');
+      assert.strictEqual(true, message.Url === 'url');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
@@ -183,16 +190,16 @@ describe('node-weixin-message', function() {
     messages.on.link(B);
 
     messages.on.link(function(message) {
-      assert.equal(true, AVisited);
-      assert.equal(true, BVisited);
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'link');
-      assert.equal(true, message.Title === '公众平台官网链接');
-      assert.equal(true, message.Description === '公众平台官网链接');
-      assert.equal(true, message.Url === 'url');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, AVisited);
+      assert.strictEqual(true, BVisited);
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'link');
+      assert.strictEqual(true, message.Title === '公众平台官网链接');
+      assert.strictEqual(true, message.Description === '公众平台官网链接');
+      assert.strictEqual(true, message.Url === 'url');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
@@ -215,7 +222,7 @@ describe('node-weixin-message', function() {
     messages.on.link(A);
     messages.on.link(A);
     messages.on.link(function() {
-      assert.equal(true, time === 1);
+      assert.strictEqual(true, time === 1);
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
@@ -238,7 +245,7 @@ describe('node-weixin-message', function() {
     messages.on.link(A);
     messages.on.link(A);
     messages.on.link(function() {
-      assert.equal(true, time === 1);
+      assert.strictEqual(true, time === 1);
       done();
     });
     var xml = fs.readFileSync(path.resolve(__dirname, './messages/link.xml'));
@@ -257,7 +264,7 @@ describe('node-weixin-message', function() {
     var r2 = {};
     r2.send = function() {
       count--;
-      assert.equal(true, time + count === 100);
+      assert.strictEqual(true, time + count === 100);
       if (count > 1) {
         http(r1, r2);
       } else {
@@ -290,14 +297,14 @@ describe('node-weixin-message', function() {
     var r1 = {};
     var r2 = {};
     r2.send = function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'link');
-      assert.equal(true, message.Title === '公众平台官网链接');
-      assert.equal(true, message.Description === '公众平台官网链接');
-      assert.equal(true, message.Url === 'url');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'link');
+      assert.strictEqual(true, message.Title === '公众平台官网链接');
+      assert.strictEqual(true, message.Description === '公众平台官网链接');
+      assert.strictEqual(true, message.Url === 'url');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
       done();
     };
 
@@ -305,7 +312,7 @@ describe('node-weixin-message', function() {
       var messages = nodeWeixinMessage.messages;
 
       function A(message, res) {
-        assert.equal(res, r2);
+        assert.strictEqual(res, r2);
         res.send(message);
       }
       messages.on.link(A);
@@ -324,21 +331,21 @@ describe('node-weixin-message', function() {
     var r1 = {};
     var r2 = {};
     r2.send = function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'link');
-      assert.equal(true, message.Title === '公众平台官网链接');
-      assert.equal(true, message.Description === '公众平台官网链接');
-      assert.equal(true, message.Url === 'url');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'link');
+      assert.strictEqual(true, message.Title === '公众平台官网链接');
+      assert.strictEqual(true, message.Description === '公众平台官网链接');
+      assert.strictEqual(true, message.Url === 'url');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
     };
 
     function http(req, res) {
       var messages = nodeWeixinMessage.messages;
       function A(message, res, cb, more) {
-        assert.equal(res, r2);
-        assert.equal(more, 'and more');
+        assert.strictEqual(res, r2);
+        assert.strictEqual(more, 'and more');
         res.send(message);
         cb();
       }
@@ -360,19 +367,19 @@ describe('node-weixin-message', function() {
     var r1 = {};
     var r2 = {};
     r2.send = function(message) {
-      assert.equal(true, message.FromUserName === 'fromUser');
-      assert.equal(true, message.ToUserName === 'toUser');
-      assert.equal(true, message.CreateTime === '1351776360');
-      assert.equal(true, message.MsgType === 'link');
-      assert.equal(true, message.Title === '公众平台官网链接');
-      assert.equal(true, message.Description === '公众平台官网链接');
-      assert.equal(true, message.Url === 'url');
-      assert.equal(true, message.MsgId === '1234567890123456');
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1351776360');
+      assert.strictEqual(true, message.MsgType === 'link');
+      assert.strictEqual(true, message.Title === '公众平台官网链接');
+      assert.strictEqual(true, message.Description === '公众平台官网链接');
+      assert.strictEqual(true, message.Url === 'url');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
     };
     var messages = nodeWeixinMessage.messages;
     function A(message, res, cb, more) {
-      assert.equal(res, r2);
-      assert.equal(more, 'and more');
+      assert.strictEqual(res, r2);
+      assert.strictEqual(more, 'and more');
       res.send(message);
       cb();
     }
@@ -385,5 +392,28 @@ describe('node-weixin-message', function() {
       }, 'and more');
     }
     http(r1, r2);
+  });
+
+  it('should be able to parse encrypted xml', function(done) {
+    var messages = nodeWeixinMessage.messages;
+
+    var query = { encrypt_type: 'aes' };
+
+    messages.on.text(function(message) {
+      assert.strictEqual(true, message.FromUserName === 'fromUser');
+      assert.strictEqual(true, message.ToUserName === 'toUser');
+      assert.strictEqual(true, message.CreateTime === '1348831860');
+      assert.strictEqual(true, message.MsgType === 'text');
+      assert.strictEqual(true, message.Content === 'this is a test');
+      assert.strictEqual(true, message.MsgId === '1234567890123456');
+      done();
+    });
+    var xml = fs.readFileSync(path.resolve(__dirname, './messages/encrypt_text.xml'));
+    x2j.parseString(xml, {
+      explicitArray: false,
+      ignoreAttrs: true
+    }, function(error, json) {
+      messages.parseEncrypt(app.APP_TOKEN, app.APP_ENCODINGAESKEY, query, json);
+    });
   });
 });
