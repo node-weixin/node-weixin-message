@@ -17,11 +17,11 @@ describe('node-weixin-message', function() {
       var messages = nodeWeixinMessage.messages;
 
       messages.event.on.subscribe(function(message) {
-        assert.equal(true, message.FromUserName === 'fromUser');
-        assert.equal(true, message.ToUserName === 'toUser');
-        assert.equal(true, message.CreateTime === '123456789');
-        assert.equal(true, message.MsgType === 'event');
-        assert.equal(true, message.Event === 'subscribe');
+        assert.strictEqual(true, message.FromUserName === 'fromUser');
+        assert.strictEqual(true, message.ToUserName === 'toUser');
+        assert.strictEqual(true, message.CreateTime === '123456789');
+        assert.strictEqual(true, message.MsgType === 'event');
+        assert.strictEqual(true, message.Event === 'subscribe');
         done();
       });
       var xml = fs.readFileSync(path.resolve(__dirname, './events/subscribe.xml'));
@@ -37,11 +37,11 @@ describe('node-weixin-message', function() {
       var messages = nodeWeixinMessage.messages;
 
       messages.event.on.unsubscribe(function(message) {
-        assert.equal(true, message.FromUserName === 'fromUser');
-        assert.equal(true, message.ToUserName === 'toUser');
-        assert.equal(true, message.CreateTime === '123456789');
-        assert.equal(true, message.MsgType === 'event');
-        assert.equal(true, message.Event === 'unsubscribe');
+        assert.strictEqual(true, message.FromUserName === 'fromUser');
+        assert.strictEqual(true, message.ToUserName === 'toUser');
+        assert.strictEqual(true, message.CreateTime === '123456789');
+        assert.strictEqual(true, message.MsgType === 'event');
+        assert.strictEqual(true, message.Event === 'unsubscribe');
         done();
       });
       var xml = fs.readFileSync(path.resolve(__dirname, './events/unsubscribe.xml'));
@@ -59,8 +59,8 @@ describe('node-weixin-message', function() {
 
       for (var k in messages.event.on) {
         if (typeof k === 'string') {
-          assert.equal(true, lists.indexOf(k) !== -1);
-          assert.equal(true, typeof messages.event.on[k] === 'function');
+          assert.strictEqual(true, lists.indexOf(k) !== -1);
+          assert.strictEqual(true, typeof messages.event.on[k] === 'function');
         }
       }
     });

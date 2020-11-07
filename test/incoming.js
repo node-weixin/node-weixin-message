@@ -343,6 +343,7 @@ describe('node-weixin-message', function() {
 
     function http(req, res) {
       var messages = nodeWeixinMessage.messages;
+
       function A(message, res, cb, more) {
         assert.strictEqual(res, r2);
         assert.strictEqual(more, 'and more');
@@ -377,6 +378,7 @@ describe('node-weixin-message', function() {
       assert.strictEqual(true, message.MsgId === '1234567890123456');
     };
     var messages = nodeWeixinMessage.messages;
+
     function A(message, res, cb, more) {
       assert.strictEqual(res, r2);
       assert.strictEqual(more, 'and more');
@@ -397,7 +399,9 @@ describe('node-weixin-message', function() {
   it('should be able to parse encrypted xml', function(done) {
     var messages = nodeWeixinMessage.messages;
 
-    var query = { encrypt_type: 'aes' };
+    var query = {
+      encrypt_type: 'aes'
+    };
 
     messages.on.text(function(message) {
       assert.strictEqual(true, message.FromUserName === 'fromUser');

@@ -18,11 +18,11 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'text');
-      assert.equal(true, json.Content === 'content');
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'text');
+      assert.strictEqual(true, json.Content === 'content');
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
       done();
     });
   });
@@ -36,11 +36,11 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'image');
-      assert.equal(true, json.Image.MediaId === 'mediaId');
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'image');
+      assert.strictEqual(true, json.Image.MediaId === 'mediaId');
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
       done();
     });
   });
@@ -53,11 +53,11 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'voice');
-      assert.equal(true, json.Voice.MediaId === 'mediaId');
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'voice');
+      assert.strictEqual(true, json.Voice.MediaId === 'mediaId');
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
       done();
     });
   });
@@ -70,13 +70,13 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'video');
-      assert.equal(true, json.Video.MediaId === 'mediaId');
-      assert.equal(true, json.Video.Title === 'title');
-      assert.equal(true, json.Video.Description === 'desc');
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'video');
+      assert.strictEqual(true, json.Video.MediaId === 'mediaId');
+      assert.strictEqual(true, json.Video.Title === 'title');
+      assert.strictEqual(true, json.Video.Description === 'desc');
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
       done();
     });
   });
@@ -90,15 +90,15 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'music');
-      assert.equal(true, json.Music.ThumbMediaId === 'mediaId');
-      assert.equal(true, json.Music.Title === 'title');
-      assert.equal(true, json.Music.Description === 'desc');
-      assert.equal(true, json.Music.MusicUrl === 'http://www.music1.com');
-      assert.equal(true, json.Music.HQMusicUrl === 'http://www.music2.com');
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'music');
+      assert.strictEqual(true, json.Music.ThumbMediaId === 'mediaId');
+      assert.strictEqual(true, json.Music.Title === 'title');
+      assert.strictEqual(true, json.Music.Description === 'desc');
+      assert.strictEqual(true, json.Music.MusicUrl === 'http://www.music1.com');
+      assert.strictEqual(true, json.Music.HQMusicUrl === 'http://www.music2.com');
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
       done();
     });
   });
@@ -126,22 +126,22 @@ describe('node-weixin-message should reply', function() {
       ignoreAttrs: true
     }, function(error, data) {
       var json = data.xml;
-      assert.equal(true, json.FromUserName === 'a');
-      assert.equal(true, json.ToUserName === 'b');
-      assert.equal(true, json.MsgType === 'news');
-      assert.equal(true, json.ArticleCount === '3');
-      assert.equal(true, json.Articles.item.length === 3);
-      assert.equal(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
+      assert.strictEqual(true, json.FromUserName === 'a');
+      assert.strictEqual(true, json.ToUserName === 'b');
+      assert.strictEqual(true, json.MsgType === 'news');
+      assert.strictEqual(true, json.ArticleCount === '3');
+      assert.strictEqual(true, json.Articles.item.length === 3);
+      assert.strictEqual(true, new Date(parseInt(json.CreateTime, 10)).getTime() > 0);
 
       var items = json.Articles.item;
       for (var i = 0; i < items.length; i++) {
         var item = items[i];
         var idx = i + 1;
 
-        assert.equal(true, item.Title === 'title' + idx);
-        assert.equal(true, item.Description === 'description' + idx);
-        assert.equal(true, item.PicUrl === 'picUrl' + idx);
-        assert.equal(true, item.Url === 'url' + idx);
+        assert.strictEqual(true, item.Title === 'title' + idx);
+        assert.strictEqual(true, item.Description === 'description' + idx);
+        assert.strictEqual(true, item.PicUrl === 'picUrl' + idx);
+        assert.strictEqual(true, item.Url === 'url' + idx);
       }
       done();
     });

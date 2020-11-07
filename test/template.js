@@ -14,8 +14,8 @@ describe('node-weixin-message', function () {
     var templateId = null;
     it('it should be able to set industry', function (done) {
       nodeWeixinMessage.template.setIndustry(settings, app, '1', '2', function (error, data) {
-        assert.equal(true, !error);
-        assert.equal(true, (data.errcode === 0 && data.errmsg === 'ok') ||
+        assert.strictEqual(true, !error);
+        assert.strictEqual(true, (data.errcode === 0 && data.errmsg === 'ok') ||
           (data.errcode === 43100 && data.errmsg.indexOf('change template too frequently hint') !== -1));
         done();
       });
@@ -24,12 +24,12 @@ describe('node-weixin-message', function () {
     it('it should be able to get template', function (done) {
       nodeWeixinMessage.template.get(settings, app, 'TM00015', function (error, data) {
         templateId = data.template_id;
-        assert.equal(true, !error);
+        assert.strictEqual(true, !error);
         if (data.errcode !== 45026) {
-          assert.equal(true, data.errcode === 0);
-          assert.equal(true, data.errmsg === 'ok');
-          assert.equal(true, typeof data.template_id === 'string');
-          assert.equal(true, data.template_id.length > 1);
+          assert.strictEqual(true, data.errcode === 0);
+          assert.strictEqual(true, data.errmsg === 'ok');
+          assert.strictEqual(true, typeof data.template_id === 'string');
+          assert.strictEqual(true, data.template_id.length > 1);
         }
         done();
       });
@@ -54,13 +54,13 @@ describe('node-weixin-message', function () {
           color: '#173177'
         }
       }, function (error, data) {
-        assert.equal(true, !error);
+        assert.strictEqual(true, !error);
         if (data.errcode === 40036) {
           console.error(error, data);
         } else {
-          assert.equal(true, data.errcode === 0);
-          assert.equal(true, data.errmsg === 'ok');
-          assert.equal(true, data.msgid > 1);
+          assert.strictEqual(true, data.errcode === 0);
+          assert.strictEqual(true, data.errmsg === 'ok');
+          assert.strictEqual(true, data.msgid > 1);
         }
         done();
       });

@@ -1,0 +1,7 @@
+{
+    "indent_size": 2,
+    "options": {
+        "camelcase": "2",
+        "space-before-function-paren": "2"
+    }
+}
